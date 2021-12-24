@@ -1,0 +1,175 @@
+# coding:utf-8
+__author__ = 'connie'
+'''
+description: 测试绑定商品开直播
+'''
+
+import unittest, time
+from src.pages import liveNow
+from src.common import driverConf, gestureManipulation
+
+
+
+class TestStatLive(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.driver = driverConf.DriverConfigure().get_driver()
+        cls.GM = gestureManipulation.GestureManipulation()
+
+    @classmethod
+    def tearDownClass(cls) -> None:
+        time.sleep(5)
+        # cls.driver.quit()
+
+    def test_binding_product_stream(self,title="222",description="222333",hashtag="222333",search="d"):
+        '''拿手柄,绑定商品开直播'''
+        self.LiveNow = liveNow.LiveNow(self.driver)
+        self.LiveNow.go_profile()
+        time.sleep(10)
+        self.LiveNow.go_live()
+        self.LiveNow.stream_now()
+        time.sleep(10)
+        self.LiveNow.stream_now_scroll_a()
+        self.LiveNow.stream_title(title)
+        self.LiveNow.click_blank()
+        self.LiveNow.description(description)
+        self.LiveNow.click_blank()
+        self.LiveNow.hashtag_text(hashtag)
+        self.LiveNow.click_blank()
+        self.LiveNow.stream_now_scroll()
+        self.LiveNow.add_cover()
+        self.LiveNow.add_photo()
+        self.LiveNow.click_done()
+        self.LiveNow.next_bath()
+        self.LiveNow.add_product()
+        self.LiveNow.search_product(search)
+        self.LiveNow.click_select_prod()
+        self.LiveNow.click_product()
+        self.LiveNow.click_product_b()
+        self.LiveNow.click_add()
+        self.LiveNow.click_next()
+    #   self.GM.swipe_up()
+    #   self.LiveNow.click_preview_next()
+    #   self.LiveNow.start_live()
+
+    def test_skip_product_stream(self,title="222",description="222333",hashtag="222333"):
+        '''拿手柄,skip商品开直播'''
+        self.LiveNow = liveNow.LiveNow(self.driver)
+        self.LiveNow.go_profile()
+        time.sleep(10)
+        self.LiveNow.go_live()
+        self.LiveNow.stream_now()
+        time.sleep(10)
+        self.LiveNow.stream_now_scroll_a()
+        self.LiveNow.stream_title(title)
+        self.LiveNow.click_blank()
+        self.LiveNow.description(description)
+        self.LiveNow.click_blank()
+        self.LiveNow.hashtag_text(hashtag)
+        self.LiveNow.click_blank()
+        self.LiveNow.stream_now_scroll()
+        self.LiveNow.add_cover()
+        self.LiveNow.add_photo()
+        self.LiveNow.click_done()
+        self.LiveNow.next_bath()
+        self.LiveNow.skip_product()
+        self.LiveNow.click_preview_next()
+        self.LiveNow.start_live()
+
+    def test_edit_product_stream(self,title="222",description="222333",hashtag="222333",search="d"):
+        '''拿手柄，修改商品开直播 title=None,description=None,hashtag=None,search=None'''
+        self.LiveNow = liveNow.LiveNow(self.driver)
+        self.LiveNow.go_profile()
+        time.sleep(10)
+        self.LiveNow.go_live()
+        self.LiveNow.stream_now()
+        time.sleep(10)
+        self.LiveNow.stream_now_scroll_a()
+        self.LiveNow.stream_title(title)
+        self.LiveNow.click_blank()
+        self.LiveNow.description(description)
+        self.LiveNow.click_blank()
+        self.LiveNow.hashtag_text(hashtag)
+        self.LiveNow.click_blank()
+        self.LiveNow.stream_now_scroll()
+        self.LiveNow.add_cover()
+        self.LiveNow.add_photo()
+        self.LiveNow.click_done()
+        self.LiveNow.next_bath()
+        self.LiveNow.add_product()
+        self.LiveNow.search_product(search)
+        self.LiveNow.click_select_prod()
+        self.LiveNow.click_product()
+        self.LiveNow.click_product_b()
+        self.LiveNow.click_add()
+        self.LiveNow.edit_product()
+        self.LiveNow.add_product_b()
+        self.LiveNow.click_add()
+        self.LiveNow.click_next()
+        self.LiveNow.stream_now_scroll_b()
+        self.LiveNow.click_preview_next()
+    #   self.LiveNow.start_live()
+
+    def test_change_camera(self,title="222",description="222333",hashtag="222333",search="d"):
+        '''拿手柄,绑定商品开直播，转换摄像头'''
+        self.LiveNow = liveNow.LiveNow(self.driver)
+        self.LiveNow.go_profile()
+        time.sleep(10)
+        self.LiveNow.go_live()
+        self.LiveNow.stream_now()
+        time.sleep(10)
+        self.LiveNow.stream_now_scroll_a()
+        self.LiveNow.stream_title(title)
+        self.LiveNow.click_blank()
+        self.LiveNow.description(description)
+        self.LiveNow.click_blank()
+        self.LiveNow.hashtag_text(hashtag)
+        self.LiveNow.click_blank()
+        self.LiveNow.stream_now_scroll()
+        self.LiveNow.add_cover()
+        self.LiveNow.add_photo()
+        self.LiveNow.click_done()
+        self.LiveNow.next_bath()
+        self.LiveNow.add_product()
+        self.LiveNow.search_product(search)
+        self.LiveNow.click_select_prod()
+        self.LiveNow.click_product()
+        self.LiveNow.click_product_b()
+        self.LiveNow.click_add()
+        self.LiveNow.click_next()
+        self.LiveNow.stream_now_scroll_b()
+        self.LiveNow.click_preview_next()
+    #   self.LiveNow.start_live()
+
+    def test_change_photo(self,title="222",description="222333",hashtag="222333",search="d"):
+        '''拿手柄,更换照片，绑定商品开直播'''
+        self.LiveNow = liveNow.LiveNow(self.driver)
+        self.LiveNow.go_profile()
+        self.LiveNow.go_live()
+        self.LiveNow.stream_now()
+        self.LiveNow.stream_now_scroll_a()
+        self.LiveNow.stream_title(title)
+        self.LiveNow.click_blank()
+        self.LiveNow.description(description)
+        self.LiveNow.click_blank()
+        self.LiveNow.hashtag_text(hashtag)
+        self.LiveNow.click_blank()
+        self.LiveNow.stream_now_scroll()
+        self.LiveNow.add_cover()
+        self.LiveNow.add_photo()
+        self.LiveNow.click_done()
+        self.LiveNow.edit_delete_photo()
+        self.LiveNow.add_photo_b()
+        self.LiveNow.click_done()
+        self.LiveNow.next_bath()
+        self.LiveNow.add_product()
+        self.LiveNow.search_product(search)
+        self.LiveNow.click_select_prod()
+        self.LiveNow.click_product()
+        self.LiveNow.click_product_b()
+        self.LiveNow.click_add()
+        self.LiveNow.click_next()
+        self.LiveNow.stream_now_scroll_b()
+        self.LiveNow.click_preview_next()
+    #   self.LiveNow.start_live()
